@@ -68,7 +68,7 @@ for folder in folder_name:
                     temp_min.append(min(all_pix))
                     fh.close()
     elif folder == 'two_dogs_a':
-        a_feature_name = ['res2','res3','res4','res5']
+        a_feature_name = ['lat2','lat3','lat4','lat5']
         for layer_a in a_feature_name:
             file_name = [f'{folder}/{layer_a}/{layer_a}_{str(i).zfill(3)}.txt' for i in range(256)]
             all_file.append(file_name)
@@ -107,7 +107,6 @@ GLOBAL_MIN = min(temp_min)
 print("GLOBAL_MAX = ", GLOBAL_MAX ,"GLOBAL_MIN = ", GLOBAL_MIN)
 
     #normalize
-
 
 for file_name in all_file[1]:
     with open(file_name,'r') as fh:
