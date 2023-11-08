@@ -1,14 +1,9 @@
 import os
 import numpy as np
 import cv2
-feature_name = ['res2','res3','res4','res5']
+feature_name = ['lateral2','lateral3','lateral4','lateral5']
 for layer in feature_name:
-#layer = 'res2'
     file_name = [f'{layer}/{layer}_{str(i).zfill(3)}.txt' for i in range(256)]
-    #for fmap in file_name:
-    	#print("處理檔案：", fmap)
-
-    #find globalmax and global min
     for fmap in file_name:
             fh = open(fmap,'r')
             L = fh.readlines()
@@ -37,5 +32,5 @@ for layer in feature_name:
 
         pix_array = np.array(img_pix)
         #print(pix_array)
-        cv2.imwrite(fmap[:13] + '.png' , pix_array)
+        cv2.imwrite(fmap[:16] + '.png' , pix_array)
         
