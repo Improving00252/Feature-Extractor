@@ -1,1 +1,127 @@
+import os
+import numpy as np
+import cv2
+
+
+all_file = []
+folder_name = ['two_dogs_r','two_dogs_a','two_dogs_p']
+temp_max = []
+temp_min = []
+for folder in folder_name:
+    if folder == 'two_dogs_r':
+        r_feature_name = ['res2','res3','res4','res5']
+        for layer_r in r_feature_name:
+            if layer_r == 'res2':
+                file_name = [f'{folder}/{layer_r}/{layer_r}_{str(i).zfill(4)}.txt' for i in range(256)]
+                all_file.append(file_name)
+                for fmap in file_name:
+                    fh = open(fmap,'r')
+                    L = fh.readlines()
+                    all_pix=[]
+                    for row in L:
+                        temp = row[:-1].split(',')
+                        for pix in temp:
+                            all_pix.append(float(pix))
+                    temp_max.append(max(all_pix))
+                    temp_min.append(min(all_pix))
+                    fh.close()
+            elif layer_r == 'res3':
+                file_name = [f'{folder}/{layer_r}/{layer_r}_{str(i).zfill(4)}.txt' for i in range(512)]
+                all_file.append(file_name)
+                for fmap in file_name:
+                    fh = open(fmap,'r')
+                    L = fh.readlines()
+                    all_pix=[]
+                    for row in L:
+                        temp = row[:-1].split(',')
+                        for pix in temp:
+                            all_pix.append(float(pix))
+                    temp_max.append(max(all_pix))
+                    temp_min.append(min(all_pix))
+                    fh.close()
+            elif layer_r == 'res4':
+                file_name = [f'{folder}/{layer_r}/{layer_r}_{str(i).zfill(4)}.txt' for i in range(1024)]
+                all_file.append(file_name)
+                for fmap in file_name:
+                    fh = open(fmap,'r')
+                    L = fh.readlines()
+                    all_pix=[]
+                    for row in L:
+                        temp = row[:-1].split(',')
+                        for pix in temp:
+                            all_pix.append(float(pix))
+                    temp_max.append(max(all_pix))
+                    temp_min.append(min(all_pix))
+                    fh.close()
+            elif layer_r == 'res5':
+                file_name = [f'{folder}/{layer_r}/{layer_r}_{str(i).zfill(4)}.txt' for i in range(2048)]
+                all_file.append(file_name)
+                for fmap in file_name:
+                    fh = open(fmap,'r')
+                    L = fh.readlines()
+                    all_pix=[]
+                    for row in L:
+                        temp = row[:-1].split(',')
+                        for pix in temp:
+                            all_pix.append(float(pix))
+                    temp_max.append(max(all_pix))
+                    temp_min.append(min(all_pix))
+                    fh.close()
+    elif folder == 'two_dogs_a':
+        a_feature_name = ['res2','res3','res4','res5']
+        for layer_a in a_feature_name:
+            file_name = [f'{folder}/{layer_a}/{layer_a}_{str(i).zfill(3)}.txt' for i in range(256)]
+            all_file.append(file_name)
+            for fmap in file_name:
+                fh = open(fmap,'r')
+                L = fh.readlines()
+                all_pix=[]
+                for row in L:
+                    temp = row[:-1].split(',')
+                    for pix in temp:
+                        all_pix.append(float(pix))
+                temp_max.append(max(all_pix))
+                temp_min.append(min(all_pix))
+                fh.close()
+
+    elif folder == 'two_dogs_p':
+        p_feature_name = ['p2','p3','p4','p5']
+        for layer_p in p_feature_name:
+            file_name = [f'{folder}/{layer_p}/{layer_p}_{str(i).zfill(3)}.txt' for i in range(256)]
+            all_file.append(file_name)
+            for fmap in file_name:
+                fh = open(fmap,'r')
+                L = fh.readlines()
+                all_pix=[]
+                for row in L:
+                    temp = row[:-1].split(',')
+                    for pix in temp:
+                        all_pix.append(float(pix))
+                temp_max.append(max(all_pix))
+                temp_min.append(min(all_pix))
+
+
+GLOBAL_MAX = max(temp_max)
+GLOBAL_MIN = min(temp_min)
+
+print("GLOBAL_MAX = ", GLOBAL_MAX ,"GLOBAL_MIN = ", GLOBAL_MIN)
+
+    #normalize
+
+
+for file_name in all_file[1]:
+    with open(file_name,'r') as fh:
+        L = fh.readlines()
+        img_pix = []
+        for row in L:
+            temp = row[:-1].split(',')
+            row_pix = []
+            for tensor in temp:
+                pix = int(255*(float(tensor) - GLOBAL_MIN) / (GLOBAL_MAX)-(GLOBAL_MIN))
+                row_pix.append(pix)
+            img_pix.append(row_pix)
+        pix_array = np.array(img_pix)
+        #print(pix_array)
+        cv2.imwrite(file_name[:25] + '.png' , pix_array)
+
 
