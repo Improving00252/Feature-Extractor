@@ -52,10 +52,10 @@ for layer in feature_name:
                 temp = row[:-1].split(',')
                 for pix in temp:
                     all_pix.append(float(pix))
-
+            fh.close()
             temp_max.append(max(all_pix))
             temp_min.append(min(all_pix))
-            fh.close()
+            
 #put the global values here !!
     GLOBAL_MAX = 
     GLOBAL_MIN = 
