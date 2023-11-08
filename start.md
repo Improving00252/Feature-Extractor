@@ -60,7 +60,7 @@ Put three different python files into pyramid 、lateral 、res , change the GLO
   | :---------- | :------------ | :------------ |
   | [pyramid](fmap_p) | [lateral](fmap_lateral) | [res](fmap_res) |
 
-Run those files , and we finish the dump out of those tensors.
+Run those files , and we dump out of those tensors.
 
     cd res
     python fmap_res.py
@@ -68,6 +68,32 @@ Run those files , and we finish the dump out of those tensors.
     python fmap_laeral.py
     cd pyramid
     python fmap_p.py
+
+example 原圖
+
+  <img decoding="async" src = https://i.imgur.com/PWfNyST.jpg  width=20%> 
+
+res
+
+  res2<img decoding="async" src = https://i.imgur.com/qI023Wj.png >
+  res3<img decoding="async" src = https://i.imgur.com/Pwv5ygs.png >
+  res4<img decoding="async" src = https://i.imgur.com/gbh27eu.png >
+  res5<img decoding="async" src = https://i.imgur.com/p5cubkp.png >
+
+lateral
+
+  lateral2<img decoding="async" src = https://i.imgur.com/Xj8GTgF.png >
+  lateral3<img decoding="async" src = https://i.imgur.com/JAk9oK7.png >
+  lateral4<img decoding="async" src = https://i.imgur.com/2JK5y2t.png >
+  lateral5<img decoding="async" src = https://i.imgur.com/xmgh8EP.png >
+
+pyramid
+  
+  pyramid2<img decoding="async" src = https://i.imgur.com/FEdLmG1.png >
+  pyramid3<img decoding="async" src = https://i.imgur.com/e4Kr4Bj.png >
+  pyramid4<img decoding="async" src = https://i.imgur.com/T9ZWp17.png >
+  pyramid5<img decoding="async" src = https://i.imgur.com/qlucbyJ.png >
+  
 
 [(back to top)](#start-from-here)
     
