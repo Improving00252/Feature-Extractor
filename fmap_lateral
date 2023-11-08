@@ -1,1 +1,41 @@
+import os
+import numpy as np
+import cv2
+feature_name = ['res2','res3','res4','res5']
+for layer in feature_name:
+#layer = 'res2'
+    file_name = [f'{layer}/{layer}_{str(i).zfill(3)}.txt' for i in range(256)]
+    #for fmap in file_name:
+    	#print("處理檔案：", fmap)
 
+    #find globalmax and global min
+    for fmap in file_name:
+            fh = open(fmap,'r')
+            L = fh.readlines()
+            all_pix=[]
+            for row in L:
+                temp = row[:-1].split(',')
+                for pix in temp:
+                    all_pix.append(float(pix))
+            fh.close()
+#
+    GLOBAL_MAX = 
+    GLOBAL_MIN = 
+
+    #normalize
+    for fmap in file_name:
+        fh = open(fmap,'r')
+        L = fh.readlines()
+        img_pix = []
+        for row in L:
+            temp = row[:-1].split(',')
+            row_pix = []
+            for tensor in temp:
+                pix = int(255*(float(tensor) - GLOBAL_MIN) / (GLOBAL_MAX)-(GLOBAL_MIN))
+                row_pix.append(pix)
+            img_pix.append(row_pix)
+
+        pix_array = np.array(img_pix)
+        #print(pix_array)
+        cv2.imwrite(fmap[:13] + '.png' , pix_array)
+        
