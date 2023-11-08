@@ -18,7 +18,7 @@ for layer in feature_name:
                 for pix in temp:
                     all_pix.append(float(pix))
             fh.close()
-#
+#put the global values here !!
     GLOBAL_MAX = 
     GLOBAL_MIN = 
 
