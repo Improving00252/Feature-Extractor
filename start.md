@@ -58,7 +58,7 @@ Those tensors are .txt file , we first find the maximum value and minimum value 
 Put three different python files into pyramid 、lateral 、res , change the GLOBAL_MAX and GLOBAL_MIN into the values we have .
   | for pyramid | for lateral | for res |
   | :---------- | :------------ | :------------ |
-  | [pyramid]() | [lateral]() | [res]() |
+  | [pyramid](fmap_p) | [lateral](fmap_lateral) | [res](fmap_res) |
 
 Run those files , and we finish the dump out of those tensors.
 
