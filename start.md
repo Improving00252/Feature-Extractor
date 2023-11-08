@@ -55,8 +55,19 @@ check those files and find whether the amount are correct , following is the ten
 Those tensors are .txt file , we first find the maximum value and minimum value , then use these two values to do inverse-quantization , through this step , tensors in deffidient layers could be judged by the same standard.
 
 
-Put three different python file into 
+Put three different python files into pyramid 、lateral 、res , change the GLOBAL_MAX and GLOBAL_MIN into the values we have .
+  | for pyramid | for lateral | for res |
+  | :---------- | :------------ | :------------ |
+  | [pyramid]() | [lateral]() | [res]() |
 
+Run those files , and we finish the dump out of those tensors.
+
+    cd res
+    python fmap_res.py
+    cd lateral
+    python fmap_laeral.py
+    cd pyramid
+    python fmap_p.py
 
 [(back to top)](#start-from-here)
     
