@@ -16,7 +16,7 @@ for layer in feature_name:
 
 
             fh.close()
-
+#put the global values here !!
     GLOBAL_MAX = 
     GLOBAL_MIN = 
 
