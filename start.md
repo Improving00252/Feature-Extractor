@@ -70,7 +70,7 @@ Run those files , and we dump out of those tensors.
 
 
 (update)
-Put global_value.py into demo file
+Put global_value.py into demo file and
 run global.py and produce dump files in the file derectory
 
     python global_value.py
